@@ -1,8 +1,17 @@
 <div class="row">
-    <div class="col-md-5">
-        <app-recipe-list></app-recipe-list>
-    </div>
-    <div class="col-md-7">
-        <app-recipe-detail></app-recipe-detail>
-    </div>
+  <div class="col-md-5">
+    <app-recipe-list
+    ></app-recipe-list>
+  </div>
+  <div class="col-md-7">
+    <!-- [recipe]="selectedRecipe" -> with this we send the selectedRecipe to be used in the recipe-detail component -->
+    <!-- <app-recipe-detail
+      *ngIf="selectedRecipe; else infoText"
+      [recipe]="selectedRecipe"
+    ></app-recipe-detail>
+    <ng-template #infoText>
+      <p>Please select a Recipe!</p>
+    </ng-template> -->
+    <router-outlet></router-outlet>
+  </div>
 </div>

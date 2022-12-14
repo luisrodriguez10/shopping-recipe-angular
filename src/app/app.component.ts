@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'course_project';
+  loadedFeature = 'recipe'
+
+  onNavigate(feature: string){
+    // console.log('feature: ', feature)
+    // receives value sent on the featureSelected from header to app
+    this.loadedFeature = feature;
+  }
 }
