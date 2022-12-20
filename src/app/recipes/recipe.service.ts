@@ -10,16 +10,23 @@ export class RecipeService{
   recipesChanged = new Subject<Recipe[]>();
     // recipeSelected = new EventEmitter<Recipe>();
     // recipeSelected = new Subject<Recipe>();
-    private recipes: Recipe[] = [
-        new Recipe(
-            'Tallarines Rojos',
-            'Italian Dish',
-            'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg',
-            [new Ingredient('Meat',1), new Ingredient('French Fries', 20)])
-    ];
+    // private recipes: Recipe[] = [
+    //     new Recipe(
+    //         'Tallarines Rojos',
+    //         'Italian Dish',
+    //         'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg',
+    //         [new Ingredient('Meat',1), new Ingredient('French Fries', 20)])
+    // ];
+
+    private recipes: Recipe[] = [];
 
     constructor(private shoppingListService: ShoppingListService){
 
+    }
+
+    setRecipes(recipes: Recipe[]){
+      this.recipes = recipes;
+      this.recipesChanged.next(this.recipes.slice());
     }
 
     getRecipes(){
