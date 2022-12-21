@@ -15,8 +15,26 @@ export class RecipeService{
     //         'Tallarines Rojos',
     //         'Italian Dish',
     //         'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg',
-    //         [new Ingredient('Meat',1), new Ingredient('French Fries', 20)])
-    // ];
+    //         [new Ingredient('Meat',1), new Ingredient('French Fries', 20)]),
+    //     new Recipe(
+    //       'Seco de Cordero',
+    //       'Peruvian Dish',
+    //       'https://www.piscotrail.com/sf/media/2014/05/seco-de-cordero.jpg',
+    //       [new Ingredient('Meat', 1), new Ingredient('Rice', 5)]
+    //     ),
+    //     new Recipe(
+    //       'Lomo Saltado',
+    //       'Peruvian Dish',
+    //       'https://d33wubrfki0l68.cloudfront.net/0d8efece3c1478eac53966918ff9e28511c5ba90/d0375/images/uploads/2022_07_18_lomo_saltado_0.jpg',
+    //       [new Ingredient('Meat', 1), new Ingredient('Potatoes', 5)]
+    //     )
+    //     ,
+    //     new Recipe(
+    //       'Chaufa',
+    //       'Peruvian Dish',
+    //       'https://www.thespruceeats.com/thmb/-cAp_KC9Qv_uD8po6TQbKouKnaM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/arroz-chaufa-chinese-peruvian-fried-rice-3029276-hero-01-ed473a093110410ba4f8342a2b9f2093.jpg',
+    //       [new Ingredient('Chicken', 1), new Ingredient('Rice', 5)]
+    //     )];
 
     private recipes: Recipe[] = [];
 
