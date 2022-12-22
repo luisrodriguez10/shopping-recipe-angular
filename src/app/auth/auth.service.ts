@@ -4,6 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 export interface AuthResponseData {
   kind: string;
@@ -27,7 +28,7 @@ export class AuthService {
   signUp(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDg579lVsDbfPlSvfzAEX43XIlDMrz7gmA',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseAPIKey,
         {
           email: email,
           password: password,
@@ -50,7 +51,7 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDg579lVsDbfPlSvfzAEX43XIlDMrz7gmA',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseAPIKey,
         {
           email: email,
           password: password,
@@ -87,10 +88,11 @@ export class AuthService {
       new Date(userData._tokenExpirationDate)
     );
 
-    if(loadedUser.token){
-
+    if (loadedUser.token) {
       this.user.next(loadedUser);
-      const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+      const expirationDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
       this.autoLogout(expirationDuration);
     }
   }
@@ -99,17 +101,17 @@ export class AuthService {
     this.user.next(null);
     this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
-    if(this.tokenExpirationTimer){
+    if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
   }
 
-  autoLogout(expirationDuration: number){
-    console.log(expirationDuration)
-    this.tokenExpirationTimer = setTimeout(() =>{
+  autoLogout(expirationDuration: number) {
+    console.log(expirationDuration);
+    this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
-    }, expirationDuration)
+    }, expirationDuration);
   }
 
   private handleAuthentication(
